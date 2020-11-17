@@ -1,0 +1,66 @@
+# TASK
+
+## TASK ONE : CODE FIXES AND REVIEW
+
+1. The folling [test suite ]() from [ reading-list.reducer.spec.ts ]()hase two test case failed. You can see the test cases below.
+
+[ describe('Books Reducer', () => {
+describe('valid Books actions', () => {
+let state: State;
+
+    beforeEach(() => {
+      state = readingListAdapter.setAll(
+        [createReadingListItem('A'), createReadingListItem('B')],
+        initialState
+      );
+    });
+
+    it('failedAddToReadingList should undo book addition to the state', () => {
+      const action = ReadingListActions.failedAddToReadingList({
+        book: createBook('B')
+      });
+
+      const result: State = reducer(state, action);
+
+      expect(result.ids).toEqual(['A']);
+    });
+
+    it('failedRemoveFromReadingList should undo book removal from the state', () => {
+      const action = ReadingListActions.failedRemoveFromReadingList({
+        item: createReadingListItem('C')
+      });
+
+      const result: State = reducer(state, action);
+
+      expect(result.ids).toEqual(['A', 'B', 'C']);
+    });
+
+});]
+
+- [Solution is as follow](): In the beforeEach case , the reduce has two items. So even the adding and removing operation fails , the reducer remains the same.
+
+[expect(result.ids).toEqual(['A', 'B']);]() , with this it works fine.
+
+## working app screenshots
+
+![](./screencapture-6.png)
+![](./screencapture-8.png)
+![](./screencapture-7.png)
+
+## unit test cases screen shot
+
+![](./screencapture-3.png)
+![](./screencapture-4.png)
+![](./screencapture-5.png)
+
+## e2e test screenshots
+
+![](./screencapture-9.png)
+
+## lint test cases screenshots
+
+![](./screencapture-11.png)
+
+## Accessibility screenshots using lighthouse
+
+![](./screencapture-10.png)
