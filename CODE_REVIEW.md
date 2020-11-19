@@ -70,14 +70,3 @@ let state: State;
 ## Accessibility screenshots using lighthouse
 
 ![](./screencapture-10.png)
-
-# TASK TWO : INSTANT SEARCH
-
-- screen shots for e2e, working app, instant search, lint, test cases
-
-![](./screencapture-12.png)
-![](./screencapture-13.png)
-![](./screencapture-14.png)
-![](./screencapture-15.png)
-![](./screencapture-16.png)
-![](./screencapture-17.png)
