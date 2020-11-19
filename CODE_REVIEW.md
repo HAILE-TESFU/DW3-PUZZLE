@@ -41,6 +41,12 @@ let state: State;
 
 [expect(result.ids).toEqual(['A', 'B']);]() , with this it works fine.
 
+2. the page loading doesn not have a sppiner
+
+## Accessibility
+
+1. using the tap it does not go down to the "Try searching for a topic, for example "JavaScript".
+
 ## working app screenshots
 
 ![](./screencapture-6.png)
@@ -64,3 +70,5 @@ let state: State;
 ## Accessibility screenshots using lighthouse
 
 ![](./screencapture-10.png)
+
+# TASK TWO : INSTANT SEARCH
