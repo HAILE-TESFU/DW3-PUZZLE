@@ -36,6 +36,13 @@ export class BookSearchComponent implements OnInit {
     this.store.select(getAllBooks).subscribe((books) => {
       this.books = books;
     });
+
+    this.searchForm
+      .get('term')
+      .valueChanges.pipe(debounceTime(1000))
+      .subscribe(() => {
+        this.searchBooks();
+      });
   }
 
   formatDate(date: void | string) {
