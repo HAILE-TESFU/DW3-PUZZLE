@@ -23,7 +23,7 @@ describe('When: Use the search feature', () => {
     );
     const form = await $('form');
     const input = await $('input[type="search"]');
-    await input.sendKeys('javascript');
+    await input.sendKeys('instant');
 
     const items = await $$('[data-testing="book-item"]');
     expect(items.length).toBeGreaterThan(1);
