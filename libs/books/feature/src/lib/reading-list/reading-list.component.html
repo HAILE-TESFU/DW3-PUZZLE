@@ -10,7 +10,7 @@
             </div>
         </div>
         <div>
-            <button mat-button *ngIf="!b.finished" (click)="markAsRead(b)">Mark Read</button>
+            <button mat-flat-button color="primary" *ngIf="!b.finished" (click)="markAsRead(b)">Mark Read</button>
             <h4 *ngIf="b.finished"><i>
         <div><strong>Finished</strong></div>
         <div><strong>{{b.finishedDate | date}}</strong></div>

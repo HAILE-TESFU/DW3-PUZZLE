@@ -1,4 +1,4 @@
-import { $, browser, ExpectedConditions } from 'protractor';
+import { $, $$, browser, ExpectedConditions } from 'protractor';
 
 describe('When: I use the reading list feature', () => {
   it('Then: I should see my reading list', async () => {
@@ -16,5 +16,12 @@ describe('When: I use the reading list feature', () => {
         'My Reading List'
       )
     );
+  });
+  it('Then: I should be able to search books by title', async () => {
+    const button = $('button[color="primary"');
+    await button.click();
+
+    const items = await $$('[data-testing="book-item"]');
+    expect(items.length).toBeGreaterThan(1);
   });
 });
