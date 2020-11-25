@@ -11,28 +11,17 @@ import {
 import { FormBuilder } from '@angular/forms';
 import { Book } from '@tmo/shared/models';
 
-import {
-  MatSnackBar,
-  MatSnackBarRef,
-  SimpleSnackBar,
-} from '@angular/material/snack-bar';
-import { Subscription } from 'rxjs';
+import { UndoActionService } from '../undo-action-snackbar-serivice/undo-action.service';
 
 import { Observable } from 'rxjs';
-
 
 @Component({
   selector: 'tmo-book-search',
   templateUrl: './book-search.component.html',
   styleUrls: ['./book-search.component.scss'],
 })
-
-export class BookSearchComponent implements OnInit, OnDestroy {
+export class BookSearchComponent implements OnInit {
   books: Observable<ReadingListBook[]>;
-
-
-  snackBarRef: MatSnackBarRef<SimpleSnackBar>;
-  subscription: Subscription;
 
   searchForm = this.fb.group({
     term: '',
@@ -41,7 +30,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   constructor(
     private readonly store: Store,
     private readonly fb: FormBuilder,
-    private snackBar: MatSnackBar
+    private undoActionSnackbar: UndoActionService
   ) {}
 
   get searchTerm(): string {
@@ -76,18 +65,6 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   }
 
   unDoAddingToList(bo: Book, action) {
-    this.snackBarRef = this.snackBar.open('book added reading list', action, {
-      duration: 2000,
-    });
-
-    const item = { bookId: bo.id, ...bo };
-
-    this.subscription = this.snackBarRef.onAction().subscribe(() => {
-      this.store.dispatch(removeFromReadingList({ item }));
-    });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.undoActionSnackbar.undoAddingBookToList(bo, action);
   }
 }
