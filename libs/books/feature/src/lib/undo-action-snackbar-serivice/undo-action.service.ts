@@ -30,6 +30,8 @@ export class UndoActionService {
     this.subscription = snackBarRef.onAction().subscribe(() => {
       this.store.dispatch(addToReadingList({ book }));
     });
+
+    this.subscription.unsubscribe();
   }
 
   undoAddingBookToList(book: Book, action) {
@@ -45,5 +47,6 @@ export class UndoActionService {
     this.subscription = snackBarRef.onAction().subscribe(() => {
       this.store.dispatch(removeFromReadingList({ item }));
     });
+    this.subscription.unsubscribe();
   }
 }
