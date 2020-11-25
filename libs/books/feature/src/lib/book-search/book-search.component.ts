@@ -42,6 +42,8 @@ export class BookSearchComponent implements OnInit {
       .subscribe(() => {
         this.searchBooks();
       });
+
+
   }
 
   formatDate(date: void | string) {
