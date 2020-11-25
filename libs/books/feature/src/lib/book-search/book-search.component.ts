@@ -10,7 +10,7 @@ import {
 } from '@tmo/books/data-access';
 import { FormBuilder } from '@angular/forms';
 import { Book } from '@tmo/shared/models';
-import { debounceTime } from 'rxjs/operators';
+
 import {
   MatSnackBar,
   MatSnackBarRef,
@@ -18,13 +18,18 @@ import {
 } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
+import { Observable } from 'rxjs';
+
+
 @Component({
   selector: 'tmo-book-search',
   templateUrl: './book-search.component.html',
   styleUrls: ['./book-search.component.scss'],
 })
+
 export class BookSearchComponent implements OnInit, OnDestroy {
-  books: ReadingListBook[];
+  books: Observable<ReadingListBook[]>;
+
 
   snackBarRef: MatSnackBarRef<SimpleSnackBar>;
   subscription: Subscription;
@@ -44,9 +49,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.store.select(getAllBooks).subscribe((books) => {
-      this.books = books;
-    });
+    this.books = this.store.select(getAllBooks);
   }
 
   formatDate(date: void | string) {

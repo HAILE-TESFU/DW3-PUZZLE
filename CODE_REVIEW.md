@@ -43,37 +43,11 @@ let state: State;
 
 2. the page loading doesn not have a sppiner
 
+3. In the book-search component there was not unsubscribe. I have changed it to reactive using the async pipe.
+
 ## Accessibility
 
 1. using the tap it does not go down to the "Try searching for a topic, for example "JavaScript".
 
-## working app screenshots
 
-![](./screencapture-6.png)
-![](./screencapture-8.png)
-![](./screencapture-7.png)
 
-## unit test cases screen shot
-
-![](./screencapture-3.png)
-![](./screencapture-4.png)
-![](./screencapture-5.png)
-
-## e2e test screenshots
-
-![](./screencapture-9.png)
-
-## lint test cases screenshots
-
-![](./screencapture-11.png)
-
-## Accessibility screenshots using lighthouse
-
-![](./screencapture-10.png)
-
-# TASK THREE: undo action:
-
-- the undo action for the adding to the reading booklist screenshot is below
-
-  ![](./screencapture-12.png)
-  ![](./screencapture-13.png)
