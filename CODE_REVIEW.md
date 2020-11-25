@@ -43,6 +43,8 @@ let state: State;
 
 2. the page loading doesn not have a sppiner
 
+3. In the book-search component there was not unsubscribe. I have changed it to reactive using the async pipe.
+
 ## Accessibility
 
 1. using the tap it does not go down to the "Try searching for a topic, for example "JavaScript".
