@@ -54,6 +54,24 @@ export class ReadingListEffects implements OnInitEffects {
     )
   );
 
+  markeReadBook$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ReadingListActions.markFinishedReading),
+      concatMap(({ item }) =>
+        this.http
+          .put(`/api/reading-list/${item.id}/finished`, item.changes)
+          .pipe(
+            map(() =>
+              ReadingListActions.confirmedMarkFinishedReading({ item })
+            ),
+            catchError(() =>
+              of(ReadingListActions.failedMarkFinishedReading({ item }))
+            )
+          )
+      )
+    )
+  );
+
   ngrxOnInitEffects() {
     return ReadingListActions.init();
   }

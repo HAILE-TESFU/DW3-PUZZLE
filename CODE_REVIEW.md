@@ -70,3 +70,10 @@ let state: State;
 ## Accessibility screenshots using lighthouse
 
 ![](./screencapture-10.png)
+
+# TASK FOUR: mark as read
+
+- screenshots
+  ![](./screencapture-12.png)
+  ![](./screencapture-13.png)
+  ![](./screencapture-14.png)
